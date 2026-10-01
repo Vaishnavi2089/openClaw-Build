@@ -31,5 +31,28 @@ export async function runWakeUp(){
 
     }
     printBannerWithShadow(ascii);
-    
+    const mode = await select({
+        message:"Which mode you want to proceed with?",
+        options :[
+            {
+                value:"cli",label:"CLI"
+            },
+            {
+                value:"whatsapp",label:"Whatsapp"
+            },
+            {
+                value:"exit",label:"Exit"
+            }
+        ]
+    });
+    if(isCancel(mode)|| mode==="exit")){
+        console.log(chalk.dim('\n Goodbye. \n'));
+        return ;
+    }
+    if(mode=="cli"){
+        console.log(chalk.dim("Starting cli mode...."))
+    }
+    else if(mode==="whatsapp"){
+        console.log(chalk.dim("Starting whatsapp mode...."))
+    }
 }
