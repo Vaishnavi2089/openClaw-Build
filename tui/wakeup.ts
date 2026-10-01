@@ -1,6 +1,7 @@
 import {select ,isCancel} from "@clack/prompts";
 import chalk from "chalk";
 import figlet from "figlet";
+import { runCliMode } from "../modes/cli";
 
 const BANNER_FONT = 'ANSI Shadow';
 const SHADOW = chalk.hex('#5b4d9e');
@@ -45,12 +46,12 @@ export async function runWakeUp(){
             }
         ]
     });
-    if(isCancel(mode)|| mode==="exit")){
+    if(isCancel(mode)|| mode==="exit"){
         console.log(chalk.dim('\n Goodbye. \n'));
         return ;
     }
     if(mode=="cli"){
-        console.log(chalk.dim("Starting cli mode...."))
+        await runCliMode()
     }
     else if(mode==="whatsapp"){
         console.log(chalk.dim("Starting whatsapp mode...."))
